@@ -41,8 +41,11 @@ main = do
   args <- getArgs
   (n, sides, count) <- case args of
     [p, q, r] -> return (read p, read q, read r)
-    _ -> do hPutStrLn stderr
-              "Usage: cabal run dice-histogram -- numDice diceSides numTries"
+    _ -> do sequence_ $ map (hPutStrLn stderr)
+              ["Usage: cabal run dice-histogram -- numDice diceSides numTries"
+              ,"For example: cabal run dice-histogram 3 6 100000"
+              ,"Simulates 100,000 rolls of 3d6"
+              ]
             exitFailure
   let gen = mkStdGen $ fromInteger t
       ns = sort $ evalRand (rollDice n sides count) gen
