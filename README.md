@@ -1,8 +1,6 @@
 # Dice Histogram
 Construct a histogram of dice rolls; e.g., roll 3d6 100,000 times and displays the results in a terminal window.
 
-This program is in the Public Domain.
-
 Example output:
 ```
    3 ==
